@@ -1,0 +1,51 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jScrollPane1" alignment="0" pref="466" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jScrollPane1" alignment="0" pref="322" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextPane" name="jTextPane1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Image inpainting Copyright (C) 2010-201, Sapan Diwakar and Pulkit Goyal&#xa;This program comes with ABSOLUTELY NO WARRANTY.&#xa;This is free software, and you are welcome to redistribute it under certain conditions.&#xa;&#xa;Inpainting is easy. Just follow these steps to guide you through the inpainting process.  &#xa;1. Open an image: Go to File. Click on Open. Alternatively click on the toolbar icon for opening an image. You can also press Ctrl^O to open an image.&#xa;2. Select the region to be inpainted/removed from your image. Just click on the border points of the region that you want to select and watch as the points are automatically interpolated to enclose a bounding polygon once you reach back to the start point. For better results, try not to leave any portion of the image that you want to remove and select curved regions (Avoid pointed edges.). Select as many regions as you want. No need for the regions to be spatially connected. &#xa;3. Start Inpainting by selecting Inpaint -&gt; Inpaint or Inpaint -&gt; Fast Inpaint or choose the toolbar icon.&#xa;4. You can watch as the selected region is removed from the image.&#xa;5. While inpainting you could also stop the process in between by clicking on the pause inpaint toolbar icon.&#xa;6. When inpainting is completed, you would see a message box to confirm the same. &#xa;7. Save or Save As your Image by selecting the appropriate option from the menu bar or the tool box. &#xa;8. Enjoy Inpainting.  "/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
