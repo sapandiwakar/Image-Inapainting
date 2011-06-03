@@ -45,7 +45,7 @@ FOR DEVELOPERS
 3. We recommend Net Beans for the development. However it is not 
    compulsary. You may use any IDE you like.
 
-4. The source code is in "Source Code/" folder.
+4. The source code is in "Image Inpainting/" folder.
 
 ---------------------------------------------------------------------
 HELP AND DOCUMENTATION
