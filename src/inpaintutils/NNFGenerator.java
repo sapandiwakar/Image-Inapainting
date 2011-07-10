@@ -21,8 +21,12 @@ public class NNFGenerator {
 	NearestNeighborField nnf;
 	final int MAX_ITERATIONS = 5;
 	final static int PATCH_RADIUS = 3;
+	final static double alpha = 0.5;
+	static int w;
 
 	public NearestNeighborField generateNNF(Image a, Image b) throws ImageReadException, IOException {
+
+		w = Math.max(a.getHeight(null), a.getWidth(null));
 
 		int[][] pixelmapA = ImageUtils.grabPixels(a);
 		int[][] pixelmapB = ImageUtils.grabPixels(b);
@@ -32,11 +36,51 @@ public class NNFGenerator {
 			BufferedImage c = new BufferedImage(a.getWidth(null), a.getHeight(null), ((BufferedImage) a).getType());
 			WritableRaster raster = c.getRaster();
 			propogateForward(pixelmapA, pixelmapB);
+			propogateRandom(pixelmapA, pixelmapB);
 			updateImage(pixelmapA, pixelmapB, raster, nnf);
 			ImageIO.write(c, "png", new File("D:/Study/Extra/Research/OutputImage" + i + ".png"));
 		}
 
 		return null;
+	}
+
+	private void propogateRandom(int[][] pixelmapA, int[][] pixelmapB) {
+		for (int i = 0; i < pixelmapA.length; i++) {
+			for (int j = 0; j < pixelmapA[i].length; j++) {
+				int k = 0;
+				Coordinate orig = nnf.getOffsetAt(i, j);
+				Coordinate current = new Coordinate(j, i);
+				int[][] patchA = ImageUtils.getPatch(pixelmapA, current, PATCH_RADIUS);
+				double D;
+				if (!ImageUtils.isValidCoordinate(ImageUtils.addCoordinates(current, orig), pixelmapA)) {
+					D = Double.MAX_VALUE;
+				} else {
+					int[][] patchB = ImageUtils.getPatch(pixelmapB, ImageUtils.addCoordinates(current, orig), PATCH_RADIUS);
+					D = ImageUtils.getDistance(patchA, patchB);
+				}
+
+				while (w * Math.pow(alpha, k) > 1) {
+					double signX = Math.random() > 0.5 ? -1 : 1;
+					double signY = Math.random() > 0.5 ? -1 : 1;
+					double rX = signX * Math.random();
+					double rY = signY * Math.random();
+					int uX = (int) (nnf.getOffsetAt(i, j).x + w * Math.pow(alpha, k) * rX);
+					int uY = (int) (nnf.getOffsetAt(i, j).y + w * Math.pow(alpha, k) * rY);
+					Coordinate newC = ImageUtils.addCoordinates(current, new Coordinate(uX, uY));
+					if (ImageUtils.isValidCoordinate(newC, pixelmapA)) {
+						int[][] patchBNew = ImageUtils.getPatch(pixelmapB, newC, PATCH_RADIUS);
+						double DNew = ImageUtils.getDistance(patchA, patchBNew);
+						if (DNew < D) {
+							D = DNew;
+							orig = new Coordinate(uX, uY);
+						}
+					}
+					++k;
+				}
+				nnf.setOffsetAt(i, j, orig);
+			}
+		}
+
 	}
 
 	public static void main(String args[]) throws IOException, ImageReadException {
