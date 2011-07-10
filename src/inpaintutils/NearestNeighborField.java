@@ -21,4 +21,12 @@ public class NearestNeighborField {
 		offsets = new Coordinate[h][w];
 	}
 
+	public Coordinate getOffsetAt(int i, int j) {
+		return offsets[i][j];
+	}
+
+	public void setOffsetAt(int i, int j, Coordinate c) {
+		offsets[i][j] = c;
+	}
+
 }
